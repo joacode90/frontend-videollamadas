@@ -257,7 +257,7 @@ const Meeting = ({ codigoSala, onLeaveMeeting }) => {
             </header>
 
             {/* 🖥️ ÁREA CENTRAL DE VIDEOS */}
-            <main className="flex-1 p-6 flex items-center justify-center relative">
+            <main className={`${style.video_main_content} flex-1 p-6 flex items-center justify-center relative`}>
 
                 {/* Recuadro de Video Principal (Persona 1) */}
                 <div className={`w-112.5 aspect-4/3 bg-[#2244a0] border border-blue-400/30 rounded-2xl flex items-center justify-center shadow-2xl relative ${style.video_content}`}>
@@ -301,7 +301,7 @@ const Meeting = ({ codigoSala, onLeaveMeeting }) => {
                 </div>
 
                 {/* 🎛️ PANEL DE CONTROLES INFERIOR */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-[#181818]/90 px-6 py-3 rounded-full flex items-center gap-5 backdrop-blur-md shadow-xl border border-gray-800">
+                <div className={`${style.call_control} absolute bottom-6 left-1/2 -translate-x-1/2 bg-[#181818]/90 px-6 py-3 rounded-full flex items-center gap-5 backdrop-blur-md shadow-xl border border-gray-800`}>
 
                     {/* Botón Micrófono */}
                     <button

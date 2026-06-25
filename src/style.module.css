@@ -1,5 +1,6 @@
 .video_content {
   overflow: hidden;
+  
 }
 
 .icon_svg
@@ -15,4 +16,26 @@
 .video_call
 {
   z-index: 1;
+}
+
+.call_control
+{
+  z-index: 2;
+  position: fixed;
+  bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .video_content {
+    position: initial;
+    width: 95%;
+  }
+
+  .video_main_content
+  {
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+    margin-bottom: 5rem;
+  }
 }
