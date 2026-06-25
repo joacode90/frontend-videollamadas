@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AuthCard from './AuthCard';
+import style from '../style.module.css';
 
 const Login = ({ onSwitchScreen, onLoginSuccess }) => {
     const [email, setEmail] = useState('');
@@ -50,7 +51,7 @@ const Login = ({ onSwitchScreen, onLoginSuccess }) => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full h-12 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3e73ff] focus:border-transparent outline-none transition mb-6"
+                    className={`w-full h-12 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3e73ff] focus:border-transparent outline-none transition mb-6`}
                     placeholder="tu@correo.com"
                     required
                 />
@@ -63,7 +64,7 @@ const Login = ({ onSwitchScreen, onLoginSuccess }) => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full h-12 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3e73ff] focus:border-transparent outline-none transition mb-8"
+                    className={`w-full h-12 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3e73ff] focus:border-transparent outline-none transition mb-8`}
                     placeholder="••••••••"
                     required
                 />
@@ -71,7 +72,7 @@ const Login = ({ onSwitchScreen, onLoginSuccess }) => {
                 {/* 🚀 Botón Principal: Iniciar Sesión */}
                 <button
                     type="submit"
-                    className="w-full h-12 bg-[#3e73ff] hover:bg-[#2a5bdf] text-white font-bold rounded-lg transition shadow-md shadow-blue-500/10 mb-4"
+                    className={`${style.button} w-full h-12 bg-[#3e73ff] hover:bg-[#0f3ebc] text-white font-bold rounded-lg transition shadow-md shadow-blue-500/10 mb-4`}
                 >
                     Iniciar Sesión
                 </button>
@@ -80,7 +81,7 @@ const Login = ({ onSwitchScreen, onLoginSuccess }) => {
                 <button
                     type="button"
                     onClick={() => onSwitchScreen('register')} // 🔄 Cambia el estado en App.jsx a 'register'
-                    className="w-full h-12 bg-[#3e73ff] hover:bg-[#2a5bdf] text-white font-bold rounded-lg transition shadow-md shadow-blue-500/10"
+                    className={`${style.button}  w-full h-12 bg-[#88a3ec] hover:bg-[#0f3ebc] text-white font-bold rounded-lg transition shadow-md shadow-blue-500/10`}
                 >
                     Registrarse
                 </button>

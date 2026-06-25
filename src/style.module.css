@@ -1,0 +1,18 @@
+.video_content {
+  overflow: hidden;
+}
+
+.icon_svg
+{
+  position: absolute;
+}
+
+.button
+{
+  cursor:pointer;
+}
+
+.video_call
+{
+  z-index: 1;
+}

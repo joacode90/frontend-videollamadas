@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
+import style from '../style.module.css';
 
 const Meeting = ({ codigoSala, onLeaveMeeting }) => {
     // 🎙️ Estados para los controles multimedia
@@ -259,7 +260,7 @@ const Meeting = ({ codigoSala, onLeaveMeeting }) => {
             <main className="flex-1 p-6 flex items-center justify-center relative">
 
                 {/* Recuadro de Video Principal (Persona 1) */}
-                <div className="w-112.5 aspect-4/3 bg-[#2244a0] border border-blue-400/30 rounded-2xl flex items-center justify-center shadow-2xl relative">
+                <div className={`w-112.5 aspect-4/3 bg-[#2244a0] border border-blue-400/30 rounded-2xl flex items-center justify-center shadow-2xl relative ${style.video_content}`}>
                     {isCameraOff ? (
                         <div className="absolute inset-0 flex items-center justify-center bg-gray-900 text-blue-200 text-sm font-medium z-10">
                             Cámara desactivada
@@ -271,25 +272,28 @@ const Meeting = ({ codigoSala, onLeaveMeeting }) => {
                         autoPlay
                         playsInline
                         muted // Muteamos nuestro propio video para no escuchar nuestro eco
-                        className="w-full h-full object-cover"
+                        className={`${style.video_call} w-full h-full object-cover`}
                     />
                     {/* Icono de Pantalla Completa arriba a la derecha */}
+                    {
+                    /*
                     <button className="absolute top-4 right-4 text-white/80 hover:text-white transition cursor-pointer">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
                         </svg>
-                    </button>
+                    </button>*/
+                    }
                 </div>
 
                 {/* Miniatura de Video Secundaria abajo a la derecha (Persona 2) */}
-                <div className="absolute bottom-6 right-6 w-44 aspect-4/3 bg-[#0f1f44] border-2 border-blue-500/40 rounded-xl flex items-center justify-center shadow-xl">
+                <div className={`absolute bottom-6 right-6 w-44 aspect-4/3 bg-[#0f1f44] border-2 border-blue-500/40 rounded-xl flex items-center justify-center shadow-xl video-content ${style.video_content}`}>
                     <video
                         ref={remoteVideoRef}
                         autoPlay
                         playsInline
-                        className="w-full h-full object-cover"
+                        className={`${style.video_call} w-full h-full object-cover`}
                     />
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                    <div className={`w-12 h-12 rounded-full bg-white flex items-center justify-center ${style.icon_svg}`}>
                         <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7 0 3.75 3.75 0 017 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                         </svg>
@@ -306,8 +310,8 @@ const Meeting = ({ codigoSala, onLeaveMeeting }) => {
                             }`}
                     >
                         {isMuted ? (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.822 7.822L21 21m-2.228-2.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                            <svg className="w-5 h-5" fill="#ffffff"  outline="none"  viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M5.7041396,5.70414456 L19.0710678,19.0710678 C19.4615921,19.4615921 19.4615921,20.0947571 19.0710678,20.4852814 C18.6805435,20.8758057 18.0473786,20.8758057 17.6568543,20.4852814 L16.063838,18.892419 C15.1449713,19.4353613 14.1081016,19.7997927 13.0009551,19.9379871 L13,21 C13,21.5522847 12.5522848,22 12,22 C11.4477153,22 11,21.5522847 11,21 L11.0000487,19.9381123 C7.05371357,19.4460359 4.00000002,16.0796344 4.00000002,12 C4.00000002,11.4477153 4.44771527,11 5.00000002,11 C5.55228477,11 6.00000002,11.4477153 6.00000002,12 C6.00000002,15.3137085 8.68629152,18 12,18 C12.9259358,18 13.8028836,17.7902576 14.5859245,17.4156917 L13.0348641,15.8648402 C12.7047768,15.9530016 12.3578769,16 12,16 C9.79086102,16 8.00000002,14.209139 8.00000002,12 L7.99993201,10.829 L4.29182523,7.12025233 C3.90130094,6.72972804 3.90130094,6.09656306 4.29182523,5.70603877 C4.68171709,5.31614691 5.3134644,5.3155155 5.7041396,5.70414456 Z M19,11 C19.5522848,11 20,11.4477153 20,12 C20,13.483507 19.5962013,14.8727017 18.8925188,16.0636691 L17.4155089,14.5863067 C17.7901893,13.803169 18,12.9260864 18,12 C18,11.4477153 18.4477153,11 19,11 Z M12,2 C14.209139,2 16,3.790861 16,6 L16,12 C16,12.3579355 15.9529862,12.7048904 15.8647969,13.0350263 L13.999932,11.171 L14,6 C14,4.8954305 13.1045695,4 12,4 C10.8954305,4 10,4.8954305 10,6 L9.99993201,7.171 L8.07145159,5.24342122 C8.4251078,3.39603916 10.0495227,2 12,2 Z"/>
                             </svg>
                         ) : (
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

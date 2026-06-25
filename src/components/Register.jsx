@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AuthCard from './AuthCard';
+import style from '../style.module.css';
 
 const Register = ({ onSwitchScreen }) => {
     // 🔑 Estados para capturar los tres campos de texto
@@ -91,7 +92,7 @@ const Register = ({ onSwitchScreen }) => {
                 {/* 🚀 Botón Principal: Registrarse */}
                 <button
                     type="submit"
-                    className="w-full h-12 bg-[#3e73ff] hover:bg-[#2a5bdf] text-white font-bold rounded-lg transition shadow-md shadow-blue-500/10 mb-4"
+                    className={`${style.button} w-full h-12 bg-[#3e73ff] hover:bg-[#0f3ebc] text-white font-bold rounded-lg transition shadow-md shadow-blue-500/10 mb-4`}
                 >
                     Registrarse
                 </button>
@@ -100,7 +101,7 @@ const Register = ({ onSwitchScreen }) => {
                 <button
                     type="button"
                     onClick={() => onSwitchScreen('login')} // 🔄 Cambia el estado en App.jsx a 'login'
-                    className="w-full h-12 bg-[#3e73ff] hover:bg-[#2a5bdf] text-white font-bold rounded-lg transition shadow-md shadow-blue-500/10"
+                    className={`${style.button} w-full h-12 bg-[#88a3ec] hover:bg-[#0f3ebc] text-white font-bold rounded-lg transition shadow-md shadow-blue-500/10`}
                 >
                     Iniciar Sesión
                 </button>
